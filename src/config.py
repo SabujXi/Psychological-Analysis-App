@@ -1,11 +1,4 @@
-# image_ext = "jpg"   # Without dot "."
-data_base_path = "data"
-temp_show_time = image_display_time = 6       # 6 seconds
-temp_increase_rate = 3       # 3c/s
 neutral_stimuli = init_temp = 32      # 32'c
-number_of_image_to_display = 100
-
-INFORMATION_DISPLAY_TIME = 3  # 3 Seconds
 
 port = "COM40"
 
@@ -14,13 +7,6 @@ port = "COM40"
 
 # developer_mode = False
 developer_mode = True
-
-# Print extra information or not?
-print_extra_info = True
-
-
-SAM_TIME = 15
-EMOTION_TIME = 15
 
 '''
 TEMP    - Temperature only page show time
@@ -34,25 +20,7 @@ INFORMATION_TEXT - Text to before showing the image view.
 INFORMATION_DISPLAY_TIME - Information page display tie, in seconds, and should >=1
 '''
 EXPERIMENT = {
-    'TEMP': 3,
-    'TEMP_TEXT': ''' 
-    Example text1.
-    Example text2.
-    Example text3.
-    ''',
-    'IMAGE': image_display_time,
-    'SAM': SAM_TIME,
-    'EMOTION': EMOTION_TIME,
-    'NUMBER': number_of_image_to_display,  # 136,
     'DEV': developer_mode,
-    'INFORMATION_TEXT': """
-        Kindly place the palm of your non-dominant hand on the thermal device for your skin to adapt to the neutral
-        temperature being used for this experiment. This page is going to display for one minute, after which your
-        experiment will continue.
-    
-        Keep your eyes on the screen at all times ready to view the next image.
-    """,
-    'INFORMATION_DISPLAY_TIME': INFORMATION_DISPLAY_TIME  # 5 #60
 }
 
 '''
