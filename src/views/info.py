@@ -5,7 +5,7 @@ from Tkinter import (
     Label
 )
 
-from tkinter.ttk import *
+from ttk import *
 
 
 class InformationView(BaseView):

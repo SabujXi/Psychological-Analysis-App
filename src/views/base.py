@@ -14,7 +14,7 @@ from Tkinter import (
 )
 import time
 
-from tkinter.ttk import Button
+from ttk import Button
 
 
 class BaseView:

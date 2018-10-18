@@ -38,7 +38,7 @@ from Tkinter import (
     DISABLED
 )
 
-from tkinter.ttk import (
+from ttk import (
     Button,
     Label,
     Radiobutton,
