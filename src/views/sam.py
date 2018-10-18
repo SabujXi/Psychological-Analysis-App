@@ -27,12 +27,8 @@ class SamView(BaseView):
         self.viewname = 'Sam view'
         BaseView.__init__(self, manager)
 
-        self.displaytime = self.config.EXPERIMENT['SAM'] * 10000
         self.load_resource()
         self.selections = {}
-    #
-    # def get_resource(self, *comps):
-    #     self.manager.get_path('')
 
     def load_resource(self):
         self.background_sam = Image.open("resource/sam.jpg")
@@ -95,8 +91,6 @@ class SamView(BaseView):
             self.add_next_action_btn(self.on_next_click)
 
         self.display()
-        self.master.after(self.displaytime, self.done)
-        # self.device.reset_temperature()
 
     def _prepare_sam(self, left_frame):
         lbl = Label(left_frame, image=self.sam_bg_img, borderwidth=0)

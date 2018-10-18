@@ -202,7 +202,7 @@ class BaseManager(object):
         return path_wo_ext
 
     @staticmethod
-    def info(sep=' ', *args):
+    def info(*args, **kwargs):
         """
         Info will be printed regardless of developer mode set.
         """
@@ -211,16 +211,20 @@ class BaseManager(object):
         for a in args:
             res.append(str(a))
 
+        sep = kwargs.get('sep', ' ')
         f.write(sep.join(res) + '\n')
 
-    def log(self, sep=' ', *args):
+    def log(self, *args, **kwargs):
+        new_args = ['LOG:\n', ]
+        new_args.extend(args)
         if self.config.developer_mode:
-            self.info(sep=sep, *args)
+            self.info(*new_args, **kwargs)
 
-    def err(self, sep=' ', *args):
+    def err(self, *args, **kwargs):
         if self.config.developer_mode:
             f = sys.stderr
-            res = []
+            res = ['ERR:\n', ]
             for a in args:
                 res.append(str(a))
+            sep = kwargs.get('sep', ' ')
             f.write(sep.join(res) + '\n')
