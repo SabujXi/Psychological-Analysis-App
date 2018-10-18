@@ -68,7 +68,7 @@ class Name2Temperature:
                         if fn.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.bmp'))]
 
             base_fns_wo_ext = [self.manager.get_base_fn_wo_ext(fn) for fn in base_fns]
-            print 'base fn s wo ext: ', base_fns_wo_ext
+            self.manager.log('base fn s wo ext: ', base_fns_wo_ext)
             # for fn in base_fns:
             #     fn_wo_ext = '.'.join(fn.rsplit('.', 1)[:-1])
             #     base_fns_wo_ext.append(fn_wo_ext)
@@ -76,18 +76,18 @@ class Name2Temperature:
             # set the abs path
             i = 0
             for base_fn in base_fns:
-                print 'basefn--to--process: ', base_fn
+                self.manager.log('basefn--to--process: ', base_fn)
                 base_fn_wo_ext = base_fns_wo_ext[i]
                 if base_fn_wo_ext in self.__temp_map:
                     abs_fn = self.manager.get_path(self.__images_dir, sub_dir, base_fn)
-                    print 'base_fn_wo_ext: ', base_fn_wo_ext
-                    print 'abs_fn: ', abs_fn
+                    self.manager.log('base_fn_wo_ext: ', base_fn_wo_ext)
+                    self.manager.log('abs_fn: ', abs_fn)
                     self.__set_path(base_fn_wo_ext, abs_fn)
                 i += 1
 
         # check if there is any base_fn_wo_ext in csv that got no real existing file
         for base_fn_wo_ext, temp_path in self.__temp_map.items():
-            print 'base_fn_wo_ext: ', base_fn_wo_ext
+            self.manager.log('base_fn_wo_ext: ', base_fn_wo_ext)
 
             path = temp_path['path']
             if path is None:
@@ -97,10 +97,10 @@ class Name2Temperature:
     def print_temp_stat(self):
         the_map = self.__temp_map
         for fname in the_map.keys():
-            print(fname + " : ")
+            self.manager.info(fname + " : ")
             for key in the_map[fname]:
-                print("  "+key+" : "+str(the_map[fname][key]))
-            print("\n")
+                self.manager.info("  "+key+" : "+str(the_map[fname][key]))
+                self.manager.info("\n")
 
 
 class DataInput:

@@ -123,14 +123,9 @@ class SelectionView(BaseView):
             bottom_frame = self.display_bottom(False)
             self.add_next_action_btn(self.on_next_click)
 
-        # Default Radio Selection
-        # rdo1.select()
-        # rdo1.invoke()
-        # print(self.master.winfo_screenwidth())
         self.display()
 
     def var_rdo_changed(self, *args):
-        # print args
         idx = self.__var_rdo.get()
         temp = self.__temp_values[idx]
         self.manager.set_temp_for_sec(temp, 6)

@@ -49,9 +49,10 @@ class ManagerThree(BaseManager):
 
     def interval_reported_4_current_view(self):
         """Override this method in implemented managers to know about time."""
+        # time_passed = self.current_view.time_spent_until_now()
+        # self.log('interval_reported_4_current_view(): Time passed: ', time_passed)
         time_passed = self.current_view.time_spent_until_now()
         if time_passed >= 5.9:
-            print 'interval_reported_4_current_view(): Time passed: ', time_passed
+            self.log('interval_reported_4_current_view(): Time passed: ', time_passed)
             self.root.after(0, lambda: self.current_view.done())
-        # time_passed = self.current_view.time_spent_until_now()
-        # print 'interval_reported_4_current_view(): Time passed: ', time_passed
+

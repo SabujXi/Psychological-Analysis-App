@@ -84,7 +84,6 @@ class BaseView:
 
     def add_next_action_btn(self, callback, text='>>', image=None):
         """Adds bottom frame at row 1 and returns nothing"""
-        print 'callback for button: ', callback
         assert callable(callback)
         self.next_button.config(command=callback)
         if text is not None:
@@ -131,50 +130,6 @@ class BaseView:
         return time.time() - self.__start_time
 
     def done(self):
-        print 'Done called'
         self.__end_time = time.time()
         self.stop_interval_alarm()
         self.manager.go_next()
-
-# --------------------------------------------------------------
-    # def setExperimentData(self):
-    #     return
-    #     #  temperatures = data_obj.getTempraturesOfCurrentTech()[0:5]
-    #     #  expe_data = str(temperatures[0])+':'+str(temperatures[1])+':'+str(temperatures[2])+':'
-    #     #  +str(temperatures[3])+':'+str(temperatures[4])
-    #     _expe_data = str(self.data_input.get_temperature())
-    #     print 'set experiment data ', _expe_data
-    #     self.experiment.data[self.experiment.count]['temperature'] = _expe_data
-    #
-    #     _display_idx = self.data_input.get_display_index()
-    #     _display_details = self.config.DISPLAY[_display_idx]
-    #     print 'display index=%d _display_details=%s' % (_display_idx, _display_details)
-    #     self.experiment.data[self.experiment.count]['display_size'] = _display_details
-    #
-    # def goNextView(self):
-    #     return
-    #     self.frame.pack_forget()
-    #     self.frame.destroy()
-    #
-    #     _lastviewname = self.viewname
-    #     if _lastviewname == 'emotionview':
-    #         self.setExperimentData()
-    #
-    #         self.experiment.count += 1
-    #         self.pauseBtn.pack_forget()
-    #         self.pauseBtn.destroy()
-    #
-    #     if self.experiment.is_finished():
-    #         self.experiment.save()
-    #         self.experiment.reset()
-    #         self.start_view.packView()
-    #         print 'go back to start view'
-    #         return
-    #
-    #     if _lastviewname == 'emotionview':
-    #         print '[', self.experiment.count, '] images have been shown'
-    #         print ''
-    #         self.experiment.save()
-    #         self.data_input.move_to_next_data()
-    #     self.nextView.packView()
-

@@ -25,7 +25,7 @@ class ImageView(BaseView):
 
         _display_idx = self.manager.get_display_index()
         _display_size = (self.config.DISPLAY_SIZE[_display_idx][0], self.config.DISPLAY_SIZE[_display_idx][1])
-        print 'display size', _display_size
+        self.manager.log('display size', _display_size)
         self._imgtk = ImageTk.PhotoImage(image_object.resize(_display_size))
 
         # # self.frame = Frame(self.master)

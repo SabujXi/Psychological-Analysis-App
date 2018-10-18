@@ -18,7 +18,6 @@ from src.resource import (
 
 from .misc import TagLabel
 from collections import namedtuple
-from pprint import pprint
 
 SamSelection = namedtuple('SamSelection', ('catetory', 'tag_value', 'widget'))
 
@@ -62,8 +61,6 @@ class SamView(BaseView):
 
         selection = SamSelection(catetory=catetory, tag_value=tag, widget=widget)
         self.selections[catetory] = selection
-
-        # pprint(self.get_selections())
 
     def get_selections(self):
         res = {}

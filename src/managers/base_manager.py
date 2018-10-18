@@ -1,3 +1,4 @@
+import sys
 import config
 from Tkinter import *
 import tkMessageBox as messagebox
@@ -28,16 +29,6 @@ class BaseManager(object):
 
         self.__fullscreen_on = False
 
-    # @property
-    # def deferreds(self):
-    #     return tuple(self.__deferreds)
-    #
-    # def add_deferred(self, cl):
-    #     assert callable(cl)
-    #     if self.__deferreds is not None:
-    #         self.__deferreds.append(cl)
-    #         print cl, ' deferred added'
-
     def make_experiment(self, result_dir):
         """
         :param result_dir: relative dir to result that will be resolved with get_path
@@ -64,7 +55,6 @@ class BaseManager(object):
 
     def get_path(self, *comps):
         new_path = os.path.join(self.__root_path, *comps)
-        # print new_path
         return new_path
 
     def get_existing_path(self, *comps):
@@ -129,7 +119,7 @@ class BaseManager(object):
             view.frame.forget()
             view.frame.destroy()
             self.__current_view = None
-            print "Current view ended"
+            self.log("Current view ended")
         return current_view
 
     def run(self, *args, **kwargs):
@@ -150,24 +140,23 @@ class BaseManager(object):
 
     def go_next(self):
         """This method should be overridden for each manager"""
-        print 'gonext called'
         return self._end_current_view()
 
     def interval_reported_4_current_view(self):
         """Override this method in implemented managers to know about time."""
         # time_passed = self.current_view.time_spent_until_now()
-        # print 'interval_reported_4_current_view(): Time passed: ', time_passed
+        # self.log('interval_reported_4_current_view(): Time passed: ', time_passed)
 
     def on_key_f11_pressed(self, *args, **kwargs):
         self.toggle_fullscreen()
 
     def toggle_fullscreen(self, *args, **kwargs):
         if self.__fullscreen_on is True:
-            print 'f pressed: fullscreen mode is on and turning off now'
+            self.info('f11 pressed: fullscreen mode is on and turning off now')
             self.master.attributes("-fullscreen", False)
             self.__fullscreen_on = False
         else:
-            print 'f pressed: fullscreen mode is off and turning on now'
+            self.info('f pressed: fullscreen mode is off and turning on now')
             self.master.attributes("-fullscreen", True)
             self.__fullscreen_on = True
 
@@ -212,3 +201,26 @@ class BaseManager(object):
         path_wo_ext = '.'.join(path.rsplit('.', 1)[:-1])
         return path_wo_ext
 
+    @staticmethod
+    def info(sep=' ', *args):
+        """
+        Info will be printed regardless of developer mode set.
+        """
+        f = sys.stdout
+        res = []
+        for a in args:
+            res.append(str(a))
+
+        f.write(sep.join(res) + '\n')
+
+    def log(self, sep=' ', *args):
+        if self.config.developer_mode:
+            self.info(sep=sep, *args)
+
+    def err(self, sep=' ', *args):
+        if self.config.developer_mode:
+            f = sys.stderr
+            res = []
+            for a in args:
+                res.append(str(a))
+            f.write(sep.join(res) + '\n')
