@@ -1,0 +1,25 @@
+Python version 2.7 will be used to run this app.
+
+Preparation
+1. install imagetk 
+    download installation package from <http://www.pythonware.com/products/pil/> according python version.
+    double click the package to install imagetk
+
+2. install pySerial 
+    download installation packae from <http://pyserial.sourceforge.net/> according python version.
+    double click the package to install pyserial
+
+3. store the images into the 8 folders under ./data/
+    delete the test images if there is.
+
+4. config the app running parameters  (optional, can use the default one directly)
+    unpack the releasing package
+    find and open ./resource/config.txt
+    change the parameters as required.
+
+How to run
+1. go to the folder where releasing package unpacked in command window
+2. type and hit enter for: 
+-> python run_one_a.py
+-> python run_one_b.py
+-> python run_two.py
