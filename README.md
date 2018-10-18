@@ -13,7 +13,7 @@ Whatever, that is just one single minor change/improvement. There are a lot of o
 I am writing this section to tell you to keep coding every day of your life and you will see that some day you have become a great programmer without you noticing that. No, the world does not need to do that. We are like backstage singers, we drive success, we do not want to be the celebrities - we make them.
 
 ## Err
-I need to clean up many parts of this application along with many print()'s. So, just ignore them. There are some dead code (especially the configs) that I will also need to remove. I will do this housekeeping job whenever I have some free time or I am taking rest off of other work. But, there is no guarantee that I will complete the housekeeping.
+I need to clean up many parts of this application <s>along with many print()'s</s>. So, just ignore them. There are some dead code (especially the configs) that I will also need to remove. I will do this housekeeping job whenever I have some free time or I am taking rest off of other work. But, there is no guarantee that I will complete the housekeeping.
 I did not keep my previous code in any version control, neighter I includied the 2016's version in this repository. This repository contains 2018's code (SEP-OCT).
 
-Also, remember that this was a Python 2.7 application. The difference with 3.x is not much there in the code - it is just print statement instead of print() function. Module import names may also vary. I will try to remove this inconsistency when I have got some time.
+Also, remember that this was a Python 2.7 application. <s>The difference with 3.x is not much there in the code - it is just print statement instead of print() function.</s> Module import names may also vary. I will try to remove this inconsistency when I have got some time.
