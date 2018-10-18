@@ -129,5 +129,4 @@ class ManagerOneB(BaseManager):
             self.device.set_temperature(32)
         else:
             self.device.set_neutral_temperature()
-
         return current_view

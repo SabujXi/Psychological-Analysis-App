@@ -77,11 +77,6 @@ class ManagerOneA(BaseManager):
             if os.path.isfile(full_fn) and fn.lower().endswith(('jpg', 'jpeg', 'png', 'gif', 'bmp')):
                 image_fns.append(fn)
 
-        # randomizing files
-        # while len(image_fns) > 0:
-        #     image_rand_idx = random.randint(0, len(image_fns) - 1)
-        #     image_fn = image_fns.pop(image_rand_idx)
-        #     self.__images_to_display.append(image_fn)
         self.__images_to_display = image_fns
 
         random.shuffle(self.__images_to_display)

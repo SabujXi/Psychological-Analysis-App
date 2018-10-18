@@ -90,11 +90,6 @@ class ManagerTwo(BaseManager):
         for fn in files:
             image_fns.append(fn)
 
-        # randomizing files
-        # while len(image_fns) > 0:
-        #     image_rand_idx = random.randint(0, len(image_fns) - 1)
-        #     image_fn = image_fns.pop(image_rand_idx)
-        #     self.__images_to_display.append(image_fn)
         self.__images_to_display = image_fns
 
         random.shuffle(self.__images_to_display)
@@ -159,12 +154,17 @@ class ManagerTwo(BaseManager):
                 self.__experiment.end()
 
         # temperature setting
-        self.device.set_temperature(32)
+        self.device.set_temperature(32)  # set temperature to 32C as the default temperature whenever view changes.
 
         self.__cancel_if_temp_after_running()
         return current_view
 
     def __cancel_if_temp_after_running(self):
+        """
+        Every time user select a temperature from the temperature selection, it is presented to the device for 6s.
+        User might select another temperature in that duration. On selecting another temperature the timer for 6s must
+        be cancelled. That's what this method does.
+        """
         if self.__current_temp_after_id is not None:
             self.root.after_cancel(self.__current_temp_after_id)
             self.__current_temp_after_id = None
