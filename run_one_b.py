@@ -8,5 +8,5 @@ sys.path.append(code_path)
 os.chdir(code_path)
 
 from managers.run_manager import run_manager
-run_manager('one_b', os.path.dirname(os.path.abspath(__file__)))
+run_manager('one_b', root_path)
 
